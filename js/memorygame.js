@@ -1,25 +1,26 @@
 
 var arrImages=[
-    {name:"baby1",src:"./images/baby.jpg"},
-    {name:"baby2",src:"./images/baby.jpg"},
-    {name:"baby3",src:"./images/baby2.jpg"},
-    {name:"baby4",src:"./images/baby2.jpg"},
-    {name:"baby5",src:"./images/baby3.jpg"},
-    {name:"baby6",src:"./images/baby3.jpg"},
-    {name:"baby7",src:"./images/baby4.jpg"},
-    {name:"baby8",src:"./images/baby4.jpg"},
-    {name:"baby9",src:"./images/baby5.jpg"},
-    {name:"baby10",src:"./images/baby5.jpg"},
-    {name:"baby11",src:"./images/baby6.jpg"},
-    {name:"baby12",src:"./images/baby6.jpg"},
+    {name:"baby1",src:"./images/puki1.jpg"},
+    {name:"baby2",src:"./images/puki1.jpg"},
+    {name:"baby3",src:"./images/puki7.jpg"},
+    {name:"baby4",src:"./images/puki7.jpg"},
+    {name:"baby5",src:"./images/puki3.jpg"},
+    {name:"baby6",src:"./images/puki3.jpg"},
+    {name:"baby7",src:"./images/puki4.jpg"},
+    {name:"baby8",src:"./images/puki4.jpg"},
+    {name:"baby9",src:"./images/puki8.jpg"},
+    {name:"baby10",src:"./images/puki8.jpg"},
+    {name:"baby11",src:"./images/puki6.jpg"},
+    {name:"baby12",src:"./images/puki6.jpg"},
 ];
  function returnImage(clickEvent){
  var btn=clickEvent.target;
      var img=document.getElementById("baby1").style.display="block";
  }
 
-function backToBackground (){
-    
+function backToBackground (clickEvent){
+   var btn=clickEvent.target;
+    var img=document.getElementById("baby1").style.display="none";
 }
 
  // var back= document.getElementsByClassName("card");
@@ -51,6 +52,13 @@ function showAll(){
     var arr=document.getElementsByClassName("babyPic");
     for (var i=0;i<arr.length;i++){
         arr[i].style.display="block";
+    }
+}
+
+function checkIfSame (target1,target2){
+    if (!(target1.target.src === target2.target.src)){
+        target1.backToBackground();
+        target2.backToBackground();
     }
 }
 
