@@ -1,0 +1,18 @@
+img{
+    height:100px;
+    width:100px;
+
+}
+
+div.card{
+    background-color:blue;
+    height:100px;
+    width:100px;
+    margin-left:15px;
+    margin-top:10px;
+border:1px solid black;
+}
+
+div.row .card{
+    display:inline-block;
+}
