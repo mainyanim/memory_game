@@ -4,20 +4,32 @@
     <meta charset="UTF-8">
     <title>MEMORY GAME</title>
     <link rel="stylesheet" type="text/css" href="css/memorygame.css">
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<button id="button">SHOW ALL</button>
-<div><br>
-    <label >What level do you want to play?</label>
-    <br>
-    <input class="length" type="checkbox" name="option1" id="twelve" value="12">Easy <br>
-    <input class="length" type="checkbox" name="option2" id="twenty" value="18">Medium <br>
-    <input class="length" type="checkbox" name="option3" id="twentyf" value="24">Hard<br>
-    <button id="button2">SUBMIT</button>
+<div class="answer" id="lightbox">
+    <div id="message">
 
-    <br>
+    </div>
+
 </div>
+<div class="structure">
+    <div class="intro">Welcome to our wonderful<br> memory game</div>
+    <button id="cheat">CHEAT ;-)</button>
 
+
+    <div><br>
+        <label>What level do you want to play?</label>
+        <br>
+        <input class="length" type="radio" name="option" id="twelve" value="12">Easy <br>
+        <input class="length" type="radio" name="option" id="twenty" value="18">Medium <br>
+        <input class="length" type="radio" name="option" id="twentyf" value="24">Hard<br>
+        <button id="new">NEW GAME</button>
+
+        <br>
+    </div>
+</div>
+<div id="game"></div>
 <script src="js/memorygame.js"></script>
 </body>
 </html>

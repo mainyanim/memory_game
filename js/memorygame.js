@@ -15,12 +15,12 @@ var arrImages = [
     {name: "baby12", src: "./images/puki6.jpg"},
     {name: "baby13", src: "./images/puki9.PNG"},
     {name: "baby14", src: "./images/puki9.PNG"},
-    {name: "baby15", src: "./images/puki13.jpg"},
-    {name: "baby16", src: "./images/puki13.jpg"},
+    {name: "baby15", src: "./images/puki20.jpg"},
+    {name: "baby16", src: "./images/puki20.jpg"},
     {name: "baby17", src: "./images/puki11.jpg"},
     {name: "baby18", src: "./images/puki11.jpg"},
-    {name: "baby19", src: "./images/puki12.jpg"},
-    {name: "baby20", src: "./images/puki12.jpg"},
+    {name: "baby19", src: "./images/puki21.jpg"},
+    {name: "baby20", src: "./images/puki21.jpg"},
     {name: "baby21", src: "./images/puki16.jpg"},
     {name: "baby22", src: "./images/puki16.jpg"},
     {name: "baby23", src: "./images/puki17.jpg"},
@@ -32,55 +32,70 @@ var RightAnswerMemory = [];   //array that will contain the images once they wer
 var tileFliped = 0; //counts the number of tiles that were fliped
 var FirstCard = []; //saves the first card that was fliped
 var SecondCard = []; // saves the second  that was fliped
-var nTile=0; // in order to randomize the number of cards according to the level i need to save the number of tiles
-var colTile=0; //how many colomns of tiles i wil have
-var rowTile=0; // how many rows i will have according to the tiles
+var nTile = 0; // in order to randomize the number of cards according to the level i need to save the number of tiles
+var colTile = 0; //how many colomns of tiles i wil have
+var rowTile = 0; // how many rows i will have according to the tiles
 var gamePaused = false;
+var countWrongAnswers = 0;
+var radioChecked = false;
+var idButtonChecked = 0;
 
-//function that checks which level was chosen by the player;
-function isChecked(){
-    var numTile=document.getElementsByClassName("length");
-    for (var i=0; i < numTile.length; i++) {
-        var btn = numTile[i];
-        if (btn.checked) {
-            nTile = parseInt(btn.value);
-            console.log(nTile);
-        }
-    }
-}
 
 
 //function that loads the Game according to the level selected by the player
 
-function loadGame (){
-    switch (nTile){
+function loadCards() {
+
+    RightAnswerMemory = [];
+    tileFliped = 0;
+    FirstCard = [];
+    SecondCard = [];
+    colTile = 0;
+    rowTile = 0;
+    gamePaused = false;
+    countWrongAnswers = 0;
+    nTile = 0;
+    radioChecked = false;
+    idButtonChecked = 0;
+    document.querySelector('.answer#lightbox').style.display = "none";
+    var numTile = document.getElementsByClassName("length");
+    document.getElementById('game').innerHTML = "";
+    for (var i = 0; i < numTile.length; i++) {
+        var btn = numTile[i];
+        if (btn.checked) {
+            nTile = parseInt(btn.value);
+            console.log(nTile);
+            idButtonChecked = btn.id;
+        }
+
+    }
+    switch (nTile) {
         case 12:
-            colTile=4;
-            rowTile=3;
+            colTile = 4;
+            rowTile = 3;
             break;
         case 18:
-            colTile=6;
-            rowTile=3;
+            colTile = 6;
+            rowTile = 3;
             break;
         case 24:
-            colTile=6;
-            rowTile=4;
+            colTile = 6;
+            rowTile = 4;
             break;
     }
-    for (var i=0;i<rowTile;i++){
-        var div= document.createElement('div');
-        div.className="row";
-        for (var j=0;j<colTile;j++){
-            var div2=document.createElement('div');
-            div2.className="card";
-            div2.id=(colTile*i)+j+1;
-
-            div2.addEventListener("click", checkPictures);
-            div.appendChild(div2);
+    var divGame = document.getElementById('game');
+    for (var r = 0; r < rowTile; r++) {
+        var divRow = document.createElement('div');
+        divRow.className = "row";
+        for (var j = 0; j < colTile; j++) {
+            var divCard = document.createElement('div');
+            divCard.className = "card";
+            divCard.id = (colTile * r) + j + 1;
+            divCard.addEventListener("click", checkPictures);
+            divRow.appendChild(divCard);
         }
-        document.body.appendChild(div);
+        divGame.appendChild(divRow);
     }
-
     randomPictures();
 }
 
@@ -106,7 +121,7 @@ function randomPictures() {
 
 //function that checks which picture was turne
 function checkPictures(clickEvent) {
-    if (!gamePaused){
+    if (!gamePaused) {
         var btn = clickEvent.target;
         var btnImg = btn.getElementsByTagName('img')[0];
         document.getElementById(btnImg.id).style.display = "block";
@@ -127,39 +142,45 @@ function checkPictures(clickEvent) {
             }
             else {
                 gamePaused = true;
-                setTimeout(function (){
+                setTimeout(function () {
                     FirstCard.style.display = "none";
                     SecondCard.style.display = "none";
                     FirstCard = [];
                     SecondCard = [];
                     gamePaused = false;
                     tileFliped = 0;
-                },1000);
+                    countWrongAnswers++;
+                }, 1000);
             }
 
         }
 
-        if (RightAnswerMemory.length===nTile){
-            alert("You won!!! You are the best");
+        if (RightAnswerMemory.length === nTile) {
+            // document.querySelector('#message').innerHTML = "Congratulations You Won and with only " + countWrongAnswers + " mistakes!!!!" +'<button id="NG" >NEW GAME</button>';
+            var wrongS=document.createElement('span');
+            wrongS.textContent= "Congratulations you won and with "+countWrongAnswers+" mistakes";
+            wrongS.id="wrong";
+            document.getElementById('message').appendChild(wrongS);
+            var buttWindow=document.createElement('button');
+            buttWindow.id="NG";
+            buttWindow.onclick=loadCards;
+            buttWindow.textContent="NEW GAME";
+            document.getElementById('message').appendChild(buttWindow);
+            document.querySelector('.answer#lightbox').style.display = "block";
         }
     }
 }
 
-
-
-
+//cheat function that shows all the pictures;
 function showAll() {
-    var arr = document.getElementsByClassName("babyPic");
-    for (var i = 0; i < arr.length; i++) {
-        arr[i].style.display = "block";
+    var arrPic = document.getElementsByClassName("babyPic");
+    for (var i = 0; i < arrPic.length; i++) {
+        arrPic[i].style.display = "block";
     }
 }
-document.getElementById("button").addEventListener("click", showAll);
+document.getElementById("cheat").addEventListener("click", showAll);
+document.getElementById("new").addEventListener("click", loadCards);
 
-
-
-document.getElementById("button2").addEventListener("click",isChecked);
-document.getElementById("button2").addEventListener("click",loadGame);
 
 
 
