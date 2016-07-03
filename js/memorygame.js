@@ -28,17 +28,16 @@ var arrImages = [
 ];
 
 
-var RightAnswerMemory = [];   //array that will contain the images once they were founc
+var RightAnswerMemory = [];   //array that will contain the images once they were found
 var tileFliped = 0; //counts the number of tiles that were fliped
 var FirstCard = []; //saves the first card that was fliped
 var SecondCard = []; // saves the second  that was fliped
 var nTile = 0; // in order to randomize the number of cards according to the level i need to save the number of tiles
 var colTile = 0; //how many colomns of tiles i wil have
 var rowTile = 0; // how many rows i will have according to the tiles
-var gamePaused = false;
-var countWrongAnswers = 0;
-var radioChecked = false;
-var idButtonChecked = 0;
+var gamePaused = false; //in order to pause the game while the setTimeOut function works
+var countWrongAnswers = 0; //to count the number of wrong answers
+
 
 
 
@@ -55,8 +54,7 @@ function loadCards() {
     gamePaused = false;
     countWrongAnswers = 0;
     nTile = 0;
-    radioChecked = false;
-    idButtonChecked = 0;
+    document.getElementById('message').innerHTML=" ";
     document.querySelector('.answer#lightbox').style.display = "none";
     var numTile = document.getElementsByClassName("length");
     document.getElementById('game').innerHTML = "";
@@ -64,8 +62,7 @@ function loadCards() {
         var btn = numTile[i];
         if (btn.checked) {
             nTile = parseInt(btn.value);
-            console.log(nTile);
-            idButtonChecked = btn.id;
+           
         }
 
     }
@@ -119,7 +116,7 @@ function randomPictures() {
     }
 }
 
-//function that checks which picture was turne
+//function that checks if the clicked pictures is equal to the previous clicked one
 function checkPictures(clickEvent) {
     if (!gamePaused) {
         var btn = clickEvent.target;
@@ -154,9 +151,8 @@ function checkPictures(clickEvent) {
             }
 
         }
-
+        //creating the pop up for the winner of the game with the amount of mistakes
         if (RightAnswerMemory.length === nTile) {
-            // document.querySelector('#message').innerHTML = "Congratulations You Won and with only " + countWrongAnswers + " mistakes!!!!" +'<button id="NG" >NEW GAME</button>';
             var wrongS=document.createElement('span');
             wrongS.textContent= "Congratulations you won and with "+countWrongAnswers+" mistakes";
             wrongS.id="wrong";

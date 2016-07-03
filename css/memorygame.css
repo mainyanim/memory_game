@@ -1,13 +1,28 @@
+
+@import url(http://db.onlinewebfonts.com/c/7616976fd9a9237720c5d9bb70e58f5f?family=GatorW01-Regular);
+
+@font-face {font-family: "GatorW01-Regular";
+    src: url("http://db.onlinewebfonts.com/t/7616976fd9a9237720c5d9bb70e58f5f.eot");
+    src: url("http://db.onlinewebfonts.com/t/7616976fd9a9237720c5d9bb70e58f5f.eot?#iefix") format("embedded-opentype"),
+    url("http://db.onlinewebfonts.com/t/7616976fd9a9237720c5d9bb70e58f5f.woff2") format("woff2"),
+    url("http://db.onlinewebfonts.com/t/7616976fd9a9237720c5d9bb70e58f5f.woff") format("woff"),
+    url("http://db.onlinewebfonts.com/t/7616976fd9a9237720c5d9bb70e58f5f.ttf") format("truetype"),
+    url("http://db.onlinewebfonts.com/t/7616976fd9a9237720c5d9bb70e58f5f.svg#GatorW01-Regular") format("svg");
+}
+
+
 body {
-    background-image: url('../images/back.jpg');
+    background-image: url('../images/back2.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     background-attachement:fixed;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'GatorW01-Regular';
     font-size:25px;
     color:white;
     line-height: 200%;
+
 }
+
 .structure{
     margin-left:15px;
 }
@@ -19,30 +34,25 @@ body {
     border:3px solid black;
     font-size:15px;
     font-weight: bold;
+    font-family: 'GatorW01-Regular';
 }
 #new{
     height:50px;
     width:150px;
     color:white;
-    background-color:#4497DD;
+    background-color:#3F81D8;
     border:3px solid black;
     font-size:15px;
     font-weight: bold;
+    font-family: 'GatorW01-Regular';
 }
 
 .intro{
     text-align: center;
     font-size: 50px;
+    color:#3F81D8;
 }
-#submit{
-    height:50px;
-    width:90px;
-    color:white;
-    background-color:#3F81D8;
-    border:3px solid black;
-    font-size:15px;
-    font-weight: bold;
-}
+
 #game{
  text-align:center;
     margin-top:-255px;
@@ -53,20 +63,22 @@ img{
 
 }
 #NG{
-    height: 50px;
-    width: 90px;
+    height: 80px;
+    width: 170px;
     color: black;
     background-color: transparent;
-    border: 1px solid black;
-    font-size: 20px;
+    border: 3px solid black;
+    font-size: 30px;
+    border-radius: 28px;
     font-weight: bold;
     text-align: center;
     display: block;
-    transform: translateX(185%);
+    transform: translateX(50%);
     margin-top: 20px;
+    font-family: 'GatorW01-Regular';
 }
 div.card{
-    background-image:url('../images/card.jpg');
+    background-image:url('../images/card2.jpg');
     height:150px;
     width:150px;
     margin-left:15px;
@@ -106,8 +118,70 @@ div.row .card{
     background-image: url('../images/back.jpg');
     background-repeat: no-repeat;
     background-size:cover;
-    font-family: 'Oswald',sans-serif;
+    font-family: 'GatorW01-Regular';
     font-weight: bold;
 
+}
+
+
+@media (max-width: 600px){
+    body {
+        font-size:15px;
+    }
+    .structure{
+        margin-left:15px;
+    }
+    #cheat{
+        height:30px;
+        width:60px;
+        border:3px solid black;
+        font-size:15px;
+        font-weight: bold;
+    }
+    #new{
+        height:20px;
+        width:90px;
+        color:white;
+        border:3px solid black;
+        font-size:15px;
+        font-weight: bold;
+    }
+
+    .intro{
+        font-size: 20px;
+    }
+    #submit{
+        height:20px;
+        width:90px;
+        color:white;
+        border:3px solid black;
+        font-size:15px;
+        font-weight: bold;
+    }
+    #game{
+        margin-top:-255px;
+    }
+    img{
+        height:80px;
+        width:80px;
+
+    }
+    #NG{
+        height:20px;
+        width:90px;
+        color:white;
+        border:3px solid black;
+        font-size:15px;
+        font-weight: bold;
+        transform: translateX(185%);
+        margin-top: 20px;
+    }
+    div.card{
+        height:80px;
+        width:80px;
+        margin-left:15px;
+        margin-top:10px;
+        border:3px solid black;
+    }
 }
 
