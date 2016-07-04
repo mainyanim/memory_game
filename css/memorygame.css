@@ -124,7 +124,7 @@ div.row .card{
 }
 
 
-@media (max-width: 600px){
+@media screen  and  (max-width:950px){
     body {
         font-size:15px;
     }
@@ -135,12 +135,69 @@ div.row .card{
         height:30px;
         width:60px;
         border:3px solid black;
+        font-size:10px;
+        font-weight: bold;
+    }
+    #new{
+        height:30px;
+        width:90px;
+        color:white;
+        border:3px solid black;
+        font-size:10px;
+        font-weight: bold;
+    }
+
+    .intro{
+        font-size: 20px;
+    }
+
+    #game{
+        margin-top:-255px;
+    }
+    img{
+        height:80px;
+        width:80px;
+
+    }
+    #NG{
+        height:50px;
+        width:90px;
+        color:black;
+        border:3px solid black;
+        font-size:15px;
+        font-weight: bold;
+        transform: translateX(185%);
+        margin-top: 20px;
+    }
+    div.card{
+        height:80px;
+        width:80px;
+        margin-left:15px;
+        margin-top:40px;
+        border:3px solid black;
+    }
+    #message{
+        font-size:15px;
+    }
+}
+
+@media screen and(max-width: 640px) {
+    body {
+        font-size:10px;
+    }
+    .structure{
+        margin-left:10px;
+    }
+    #cheat{
+        height:20px;
+        width:40px;
+        border:3px solid black;
         font-size:15px;
         font-weight: bold;
     }
     #new{
-        height:20px;
-        width:90px;
+        height:10px;
+        width:50px;
         color:white;
         border:3px solid black;
         font-size:15px;
@@ -148,11 +205,11 @@ div.row .card{
     }
 
     .intro{
-        font-size: 20px;
+        font-size: 10px;
     }
     #submit{
-        height:20px;
-        width:90px;
+        height:10px;
+        width:50px;
         color:white;
         border:3px solid black;
         font-size:15px;
@@ -162,8 +219,8 @@ div.row .card{
         margin-top:-255px;
     }
     img{
-        height:80px;
-        width:80px;
+        height:50px;
+        width:50px;
 
     }
     #NG{
@@ -177,11 +234,10 @@ div.row .card{
         margin-top: 20px;
     }
     div.card{
-        height:80px;
-        width:80px;
-        margin-left:15px;
-        margin-top:10px;
+        height:50px;
+        width:50px;
+        margin-left:8px;
+        margin-top:5px;
         border:3px solid black;
     }
 }
-
