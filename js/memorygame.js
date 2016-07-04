@@ -80,6 +80,10 @@ function loadCards() {
             rowTile = 4;
             break;
     }
+
+    $('div.level').click (function(){
+       $('div.level').hide(3000);
+    });
     var divGame = document.getElementById('game');
     for (var r = 0; r < rowTile; r++) {
         var divRow = document.createElement('div');
