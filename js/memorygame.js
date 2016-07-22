@@ -55,6 +55,7 @@ memoryGame.loadCards=function() {
     memoryGame.gamePaused = false;
     memoryGame.countWrongAnswers = 0;
     memoryGame.nTile = 0;
+    document.getElementById("level").style.visibility="visible";
     document.getElementById('message').innerHTML=" ";
     document.querySelector('.answer#lightbox').style.display = "none";
     var numTile = document.getElementsByClassName("length");
@@ -172,10 +173,14 @@ memoryGame.checkPictures=function(clickEvent) {
             document.querySelector('.answer#lightbox').style.display = "block";
         }
     }
+    // memoryGame.reload=function(){
+    //
+    // }
 };
 
 
 document.getElementById("new").addEventListener("click", memoryGame.loadCards);
+document.getElementById("newGame").addEventListener("click", memoryGame.loadCards);
 
 
 
