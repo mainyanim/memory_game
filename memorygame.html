@@ -4,44 +4,59 @@
     <meta charset="UTF-8">
     <title>MEMORY GAME</title>
     <link rel="stylesheet" type="text/css" href="css/memorygame.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-    <link href="//db.onlinewebfonts.com/c/7616976fd9a9237720c5d9bb70e58f5f?family=GatorW01-Regular" rel="stylesheet" type="text/css">
+    <link href="//db.onlinewebfonts.com/c/7616976fd9a9237720c5d9bb70e58f5f?family=GatorW01-Regular" rel="stylesheet"
+          type="text/css">
 
 </head>
-<body>
+<body class="memory">
 <div class="answer" id="lightbox">
     <div id="message">
 
     </div>
 
 </div>
-<div class="structure">
-    <div class="intro"><span>Welcome to our wonderful<br> memory game
-        <button id="newGame">NEW GAME</button>
-    </span></div>
+<div class="container structure">
+    <div class="row intro">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            Welcome to our wonderful<br> memory game
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <button id="newGame">NEW GAME</button>
+        </div>
+    </div>
 
+    <div class="row">
+        <div id="level" class="col-xs-2 col-sm-2 col-md-2 col-lg-2 leve2"><br>
+            <label>Level</label>
+            <br>
 
+            <input class="length" type="radio" name="option" id="twelve" value="12">
+            <label for="twelve">Easy</label>
+            <br>
+            <input class="length" type="radio" name="option" id="eighteen" value="18">
+            <label for="eighteen">Medium</label>
+            <br>
+            <input class="length" type="radio" name="option" id="twentyf" value="24">
+            <label for="twentyf">Hard</label>
+            <br>
+            <button id="new">PLAY</button>
 
-    <div id="level" class="level"><br>
-        <label>Level</label>
-        <br>
+            <br>
+        </div>
+        <div id="game" class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
 
-        <input class="length" type="radio" name="option" id="twelve" value="12">
-        <label for="twelve">Easy</label>
-        <br>
-        <input class="length" type="radio" name="option" id="eighteen" value="18">
-        <label for="eighteen">Medium</label>
-        <br>
-        <input class="length" type="radio" name="option" id="twentyf" value="24">
-        <label for="twentyf">Hard</label>
-        <br>
-        <button id="new">PLAY</button>
+        </div>
+        <!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">-->
 
-        <br>
+        <!--</div>-->
     </div>
 </div>
-<div id="game"></div>
+
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
 <script src="js/memorygame.js"></script>
 </body>

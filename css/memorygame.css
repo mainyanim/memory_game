@@ -11,16 +11,16 @@
 }
 
 
-body {
+.memory {
     background-image: url('../images/back2.jpg');
     background-repeat: no-repeat;
     background-size:cover;
     background-attachement:fixed;
     font-family: 'GatorW01-Regular';
     /*font-family: "Arial", serif;*/
-    font-size:25px;
+    font-size:1.8vw;
     color:white;
-    line-height: 200%;
+
 
 }
 
@@ -29,38 +29,53 @@ body {
 }
 
 #new{
-    height:50px;
-    width:150px;
+    height:5vw;
+    width:8vw;
     color:white;
     background-color:#3F81D8;
     border:3px solid black;
-    font-size:15px;
+    font-size:1.8vw;
     font-weight: bold;
     font-family: 'GatorW01-Regular';
 }
 
 .intro{
     text-align: center;
-    font-size: 50px;
+    font-size: 3vw;
+    margin-top:20px;
     color:#3F81D8;
 }
 
 #game{
  text-align:center;
-    margin-top:-240px;
-}
-img{
-    height:150px;
-    width:150px;
+    /*margin-top:10%;*/
+    /*margin-left:10%;*/
 
 }
+img{
+    height:9vw;
+    width:9vw;
+
+
+}
+
+#newGame{
+    height:5vw;
+    width:8vw;
+    color:white;
+    background-color:#3F81D8;
+    border:3px solid black;
+    font-size:1.5vw;
+    font-weight: bold;
+    font-family: 'GatorW01-Regular';
+}
 #NG{
-    height: 80px;
-    width: 170px;
+    height:5vw;
+    width:8vw;
     color: black;
     background-color: transparent;
     border: 3px solid black;
-    font-size: 30px;
+    font-size: 5vw;
     border-radius: 28px;
     font-weight: bold;
     text-align: center;
@@ -71,10 +86,9 @@ img{
 }
 div.card{
     background-image:url('../images/card2.jpg');
-    height:150px;
-    width:150px;
+    height:9vw;
+    width:9vw;
     margin-left:15px;
-    /*margin-top:50px;*/
 border:3px solid black;
 }
 
@@ -101,7 +115,7 @@ div.row .card{
     transform: translateX(-50%) translateY(-50%);
     background-color: white;
     padding: 200px;
-    font-size: 40px;
+    font-size: 5vw;
     border-radius: 18px;
     background-size: cover;
     background-repeat: no-repeat;
@@ -116,120 +130,3 @@ div.row .card{
 }
 
 
-@media screen  and  (max-width:950px){
-    body {
-        font-size:15px;
-    }
-    .structure{
-        margin-left:15px;
-    }
-    #cheat{
-        height:30px;
-        width:60px;
-        border:3px solid black;
-        font-size:10px;
-        font-weight: bold;
-    }
-    #new{
-        height:30px;
-        width:90px;
-        color:white;
-        border:3px solid black;
-        font-size:10px;
-        font-weight: bold;
-    }
-
-    .intro{
-        font-size: 20px;
-    }
-
-    #game{
-        margin-top:20px;
-    }
-    img{
-        height:80px;
-        width:80px;
-
-    }
-    #NG{
-        height:50px;
-        width:90px;
-        color:black;
-        border:3px solid black;
-        font-size:15px;
-        font-weight: bold;
-        transform: translateX(185%);
-        margin-top: 20px;
-    }
-    div.card{
-        height:80px;
-        width:80px;
-        margin-left:15px;
-        /*margin-top:40px;*/
-        border:3px solid black;
-    }
-    #message{
-        font-size:15px;
-    }
-}
-
-@media screen and(max-width: 640px) {
-    body {
-        font-size:10px;
-    }
-    .structure{
-        margin-left:10px;
-    }
-    #cheat{
-        height:20px;
-        width:40px;
-        border:3px solid black;
-        font-size:15px;
-        font-weight: bold;
-    }
-    #new{
-        height:10px;
-        width:50px;
-        color:white;
-        border:3px solid black;
-        font-size:15px;
-        font-weight: bold;
-    }
-
-    .intro{
-        font-size: 10px;
-    }
-    #submit{
-        height:10px;
-        width:50px;
-        color:white;
-        border:3px solid black;
-        font-size:15px;
-        font-weight: bold;
-    }
-    #game{
-        margin-top:-255px;
-    }
-    img{
-        height:50px;
-        width:50px;
-
-    }
-    #NG{
-        height:20px;
-        width:90px;
-        color:white;
-        border:3px solid black;
-        font-size:15px;
-        font-weight: bold;
-        transform: translateX(185%);
-        margin-top: 20px;
-    }
-    div.card{
-        height:50px;
-        width:50px;
-        margin-left:8px;
-        /*margin-top:5px;*/
-        border:3px solid black;
-    }
-}

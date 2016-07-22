@@ -86,7 +86,7 @@ memoryGame.loadCards=function() {
         setTimeout(function () {
             document.getElementById("level").style.visibility = "hidden";
         }, 3000);});
-    
+
     var divGame = document.getElementById('game');
     for (var r = 0; r < memoryGame.rowTile; r++) {
         var divRow = document.createElement('div');
