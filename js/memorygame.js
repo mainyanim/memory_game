@@ -1,6 +1,7 @@
-"useStrict";
+"use strict";
 // this is the array that contains all my images
-var arrImages = [
+var memoryGame={};
+  memoryGame.arrImages = [
     {name: "baby1", src: "./images/puki1.jpg"},
     {name: "baby2", src: "./images/puki1.jpg"},
     {name: "baby3", src: "./images/puki7.jpg"},
@@ -28,32 +29,32 @@ var arrImages = [
 ];
 
 
-var RightAnswerMemory = [];   //array that will contain the images once they were found
-var tileFliped = 0; //counts the number of tiles that were fliped
-var FirstCard = []; //saves the first card that was fliped
-var SecondCard = []; // saves the second  that was fliped
-var nTile = 0; // in order to randomize the number of cards according to the level i need to save the number of tiles
-var colTile = 0; //how many colomns of tiles i wil have
-var rowTile = 0; // how many rows i will have according to the tiles
-var gamePaused = false; //in order to pause the game while the setTimeOut function works
-var countWrongAnswers = 0; //to count the number of wrong answers
+memoryGame.RightAnswerMemory = [];   //array that will contain the images once they were found
+memoryGame.tileFliped = 0; //counts the number of tiles that were fliped
+memoryGame.FirstCard = []; //saves the first card that was fliped
+memoryGame.SecondCard = []; // saves the second  that was fliped
+memoryGame.nTile = 0; // in order to randomize the number of cards according to the level i need to save the number of tiles
+memoryGame.colTile = 0; //how many colomns of tiles i wil have
+memoryGame.rowTile = 0; // how many rows i will have according to the tiles
+memoryGame.gamePaused = false; //in order to pause the game while the setTimeOut function works
+memoryGame.countWrongAnswers = 0; //to count the number of wrong answers
 
 
 
 
 //function that loads the Game according to the level selected by the player
 
-function loadCards() {
+memoryGame.loadCards=function() {
 
-    RightAnswerMemory = [];
-    tileFliped = 0;
-    FirstCard = [];
-    SecondCard = [];
-    colTile = 0;
-    rowTile = 0;
-    gamePaused = false;
-    countWrongAnswers = 0;
-    nTile = 0;
+    memoryGame.RightAnswerMemory = [];
+    memoryGame.tileFliped = 0;
+    memoryGame.FirstCard = [];
+    memoryGame.SecondCard = [];
+    memoryGame.colTile = 0;
+    memoryGame.rowTile = 0;
+    memoryGame.gamePaused = false;
+    memoryGame.countWrongAnswers = 0;
+    memoryGame.nTile = 0;
     document.getElementById('message').innerHTML=" ";
     document.querySelector('.answer#lightbox').style.display = "none";
     var numTile = document.getElementsByClassName("length");
@@ -61,125 +62,120 @@ function loadCards() {
     for (var i = 0; i < numTile.length; i++) {
         var btn = numTile[i];
         if (btn.checked) {
-            nTile = parseInt(btn.value);
+            memoryGame.nTile = parseInt(btn.value);
            
         }
 
     }
-    switch (nTile) {
+    switch (memoryGame.nTile) {
         case 12:
-            colTile = 4;
-            rowTile = 3;
+            memoryGame.colTile = 4;
+            memoryGame.rowTile = 3;
             break;
         case 18:
-            colTile = 6;
-            rowTile = 3;
+            memoryGame.colTile = 6;
+            memoryGame.rowTile = 3;
             break;
         case 24:
-            colTile = 6;
-            rowTile = 4;
+            memoryGame.colTile = 6;
+            memoryGame.rowTile = 4;
             break;
     }
 
-    $('div.level').click (function(){
-       $('div.level').hide(3000);
-    });
+    document.getElementById("level").addEventListener("click",function(){
+        setTimeout(function () {
+            document.getElementById("level").style.visibility = "hidden";
+        }, 3000);});
+    
     var divGame = document.getElementById('game');
-    for (var r = 0; r < rowTile; r++) {
+    for (var r = 0; r < memoryGame.rowTile; r++) {
         var divRow = document.createElement('div');
         divRow.className = "row";
-        for (var j = 0; j < colTile; j++) {
+        for (var j = 0; j < memoryGame.colTile; j++) {
             var divCard = document.createElement('div');
             divCard.className = "card";
-            divCard.id = (colTile * r) + j + 1;
-            divCard.addEventListener("click", checkPictures);
+            divCard.id = (memoryGame.colTile * r) + j + 1;
+            divCard.addEventListener("click", memoryGame.checkPictures);
             divRow.appendChild(divCard);
         }
         divGame.appendChild(divRow);
     }
-    randomPictures();
-}
+    memoryGame.randomPictures();
+};
 
 
 //function that randomizes the pictures and puts them in a div randomly
-function randomPictures() {
-    for (var i = 0; i < nTile; i++) {
-        var ranNum = Math.floor(Math.random() * (nTile)) + 1;
+memoryGame.randomPictures=function() {
+    for (var i = 0; i < memoryGame.nTile; i++) {
+        var ranNum = Math.floor(Math.random() * (memoryGame.nTile)) + 1;
         var divNum = document.getElementById(ranNum + "");
         while (divNum.getElementsByTagName('img').length > 0) {
-            ranNum = Math.floor(Math.random() * (nTile)) + 1;
+            ranNum = Math.floor(Math.random() * (memoryGame.nTile)) + 1;
             divNum = document.getElementById(ranNum + "");
         }
         var newImg = document.createElement('img');
-        newImg.id = arrImages[i].name;
-        newImg.src = arrImages[i].src;
+        newImg.id = memoryGame.arrImages[i].name;
+        newImg.src = memoryGame.arrImages[i].src;
         newImg.className = "babyPic";
         newImg.style.display = "none";
         divNum.appendChild(newImg);
 
     }
-}
+};
 
 //function that checks if the clicked pictures is equal to the previous clicked one
-function checkPictures(clickEvent) {
-    if (!gamePaused) {
+memoryGame.checkPictures=function(clickEvent) {
+    if (!memoryGame.gamePaused) {
         var btn = clickEvent.target;
         var btnImg = btn.getElementsByTagName('img')[0];
         document.getElementById(btnImg.id).style.display = "block";
         var tile = clickEvent.target;
         var tileImg = tile.getElementsByTagName('img')[0];
-        if (tileFliped === 0) {
-            FirstCard = tileImg;
-            tileFliped = 1;
+        if (memoryGame.tileFliped === 0) {
+            memoryGame.FirstCard = tileImg;
+            memoryGame.tileFliped = 1;
         }
-        else if (tileFliped === 1) {
-            SecondCard = tileImg;
-            if (FirstCard.src === SecondCard.src) {
-                RightAnswerMemory.push(FirstCard);
-                RightAnswerMemory.push(SecondCard);
-                FirstCard = [];
-                SecondCard = [];
-                tileFliped = 0;
+        else if (memoryGame.tileFliped === 1) {
+            memoryGame.SecondCard = tileImg;
+            if (memoryGame.FirstCard.src === memoryGame.SecondCard.src) {
+                memoryGame.RightAnswerMemory.push(memoryGame.FirstCard);
+                memoryGame.RightAnswerMemory.push(memoryGame.SecondCard);
+                memoryGame.FirstCard = [];
+                memoryGame.SecondCard = [];
+                memoryGame.tileFliped = 0;
             }
             else {
-                gamePaused = true;
+                memoryGame.gamePaused = true;
                 setTimeout(function () {
-                    FirstCard.style.display = "none";
-                    SecondCard.style.display = "none";
-                    FirstCard = [];
-                    SecondCard = [];
-                    gamePaused = false;
-                    tileFliped = 0;
-                    countWrongAnswers++;
+                    memoryGame.FirstCard.style.display = "none";
+                    memoryGame.SecondCard.style.display = "none";
+                    memoryGame.FirstCard = [];
+                    memoryGame.SecondCard = [];
+                    memoryGame.gamePaused = false;
+                    memoryGame.tileFliped = 0;
+                    memoryGame.countWrongAnswers++;
                 }, 1000);
             }
 
         }
         //creating the pop up for the winner of the game with the amount of mistakes
-        if (RightAnswerMemory.length === nTile) {
+        if (memoryGame.RightAnswerMemory.length === memoryGame.nTile) {
             var wrongS=document.createElement('span');
-            wrongS.textContent= "Congratulations you won and with "+countWrongAnswers+" mistakes";
+            wrongS.textContent= "Congratulations you won and with "+memoryGame.countWrongAnswers+" mistakes";
             wrongS.id="wrong";
             document.getElementById('message').appendChild(wrongS);
             var buttWindow=document.createElement('button');
             buttWindow.id="NG";
-            buttWindow.onclick=loadCards;
+            buttWindow.onclick=memoryGame.loadCards;
             buttWindow.textContent="NEW GAME";
             document.getElementById('message').appendChild(buttWindow);
             document.querySelector('.answer#lightbox').style.display = "block";
         }
     }
-}
+};
 
-//cheat function that shows all the pictures;
-function showAll() {
-    var arrPic = document.getElementsByClassName("babyPic");
-    for (var i = 0; i < arrPic.length; i++) {
-        arrPic[i].style.display = "block";
-    }
-}
-document.getElementById("cheat").addEventListener("click", showAll);
-document.getElementById("new").addEventListener("click", loadCards);
+
+document.getElementById("new").addEventListener("click", memoryGame.loadCards);
 
 
 

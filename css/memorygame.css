@@ -17,6 +17,7 @@ body {
     background-size:cover;
     background-attachement:fixed;
     font-family: 'GatorW01-Regular';
+    /*font-family: "Arial", serif;*/
     font-size:25px;
     color:white;
     line-height: 200%;
@@ -26,16 +27,7 @@ body {
 .structure{
     margin-left:15px;
 }
-#cheat{
-    height:50px;
-    width:90px;
-    color:white;
-    background-color:#2869D1;
-    border:3px solid black;
-    font-size:15px;
-    font-weight: bold;
-    font-family: 'GatorW01-Regular';
-}
+
 #new{
     height:50px;
     width:150px;
@@ -55,7 +47,7 @@ body {
 
 #game{
  text-align:center;
-    margin-top:-60px;
+    margin-top:-240px;
 }
 img{
     height:150px;
@@ -152,7 +144,7 @@ div.row .card{
     }
 
     #game{
-        margin-top:-25px;
+        margin-top:20px;
     }
     img{
         height:80px;
